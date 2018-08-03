@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SimpleLists
 {
-   public class SingleNode
+   public class SingleNode<T>
     {
-        public SingleNode next;
-        public string data;
+        public SingleNode<T> next;
+        public T data;
     }
 }

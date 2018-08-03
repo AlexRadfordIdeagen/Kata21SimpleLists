@@ -8,11 +8,11 @@ namespace SimpleLists
 {
     public class SinglyLinkedList
     {
-        private SingleNode head;
+        private SingleNode<string> head;
 
         public void Print()
         {
-            SingleNode current = head;
+            SingleNode<string> current = head;
             while (current != null)
             {
                 Console.WriteLine(current.data);
@@ -25,7 +25,7 @@ namespace SimpleLists
         {
             int i = 0;
             int count = Count();
-            SingleNode current = head;
+            SingleNode<string> current = head;
 
             string[] result = new string[count];
 
@@ -50,7 +50,7 @@ namespace SimpleLists
         public int Count()
         {
             int i = 0;
-            SingleNode current = head;
+            SingleNode<string> current = head;
             while (current != null)
             {
                 i++;
@@ -64,7 +64,7 @@ namespace SimpleLists
 
             var node = Find(nodeName);
 
-            SingleNode previous = null, current = head;
+            SingleNode<string> previous = null, current = head;
             while (current != null)
             {
                 if (current == node)
@@ -82,7 +82,7 @@ namespace SimpleLists
             }
         }
 
-        public SingleNode Find(string search)
+        public SingleNode<string> Find(string search)
         {
             if (head == null)
             {
@@ -92,7 +92,7 @@ namespace SimpleLists
             }
             else
             {
-                SingleNode current = head;
+                SingleNode<string> current = head;
 
                 while (current != null)
                 {
@@ -111,7 +111,7 @@ namespace SimpleLists
         {
             if (head == null)
             {
-                head = new SingleNode
+                head = new SingleNode<string>
                 {
                     data = data,
                     next = null
@@ -119,12 +119,12 @@ namespace SimpleLists
             }
             else
             {
-                SingleNode toAdd = new SingleNode
+                SingleNode<string> toAdd = new SingleNode<string>
                 {
                     data = data
                 };
 
-                SingleNode current = head;
+                SingleNode<string> current = head;
                 while (current.next != null)
                 {
                     current = current.next;

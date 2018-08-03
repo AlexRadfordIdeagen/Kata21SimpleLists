@@ -5,11 +5,11 @@ namespace SimpleLists
 {
     public class DoublyLinkedList
     {
-        private DoubleNode head;
+        private DoubleNode<string> head;
 
         public void Print()
         {
-            DoubleNode current = head;
+            DoubleNode<string> current = head;
             while (current != null)
             {
                 Console.WriteLine(current.data);
@@ -22,7 +22,7 @@ namespace SimpleLists
         {
             int i = 0;
             int count = Count();
-            DoubleNode current = head;
+            DoubleNode<string> current = head;
 
             string[] result = new string[count];
 
@@ -47,7 +47,7 @@ namespace SimpleLists
         public int Count()
         {
             int i = 0;
-            DoubleNode current = head;
+            DoubleNode<string> current = head;
             while (current != null)
             {
                 i++;
@@ -61,7 +61,7 @@ namespace SimpleLists
         {
             var node = Find(nodeName);
 
-            DoubleNode previous = null, current = head;
+            DoubleNode<string> previous = null, current = head;
             while (current != null)
             {
                 if (current == node)
@@ -82,7 +82,7 @@ namespace SimpleLists
             }
         }
 
-        public DoubleNode Find(string search)
+        public DoubleNode<string> Find(string search)
         {
             if (head == null)
             {
@@ -92,7 +92,7 @@ namespace SimpleLists
             }
             else
             {
-                DoubleNode current = head;
+                DoubleNode<string> current = head;
 
                 while (current != null)
                 {
@@ -111,7 +111,7 @@ namespace SimpleLists
         {
             if (head == null)
             {
-                head = new DoubleNode
+                head = new DoubleNode<string>
                 {
                     data = data,
                     next = null,
@@ -120,12 +120,12 @@ namespace SimpleLists
             }
             else
             {
-                DoubleNode toAdd = new DoubleNode
+                DoubleNode<string> toAdd = new DoubleNode<string>
                 {
                     data = data
                 };
 
-                DoubleNode current = head;
+                DoubleNode<string> current = head;
                 while (current.next != null)
                 {
                     current = current.next;
