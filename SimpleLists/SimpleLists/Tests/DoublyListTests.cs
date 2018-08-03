@@ -54,5 +54,19 @@ namespace SimpleLists.Tests
             doubleList.Delete("James");
             Assert.AreEqual(doubleList.Count(), 3);
         }
+
+        [Test]
+        public void RemoveFromEnd()
+        {
+            var testList = new DoublyLinkedList();
+            testList.Add("one");
+            testList.Add("two");
+            testList.Add("three");
+
+            testList.Delete("three");
+            string[] expected = { "one", "two" };
+
+            Assert.AreEqual(expected, testList.Values());
+        }
     }
 }

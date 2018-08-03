@@ -72,8 +72,10 @@ namespace SimpleLists
                 {
                     previous = current;
                     previous.next = current.next.next;
-                    current.next.previous = current;
-
+                    if (current.next != null)
+                    {
+                        current.next.previous = current;
+                    }
                 }
                 current = current.next;
 
