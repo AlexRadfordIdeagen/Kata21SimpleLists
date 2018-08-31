@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoubleNode.cs" />
+    <Compile Include="INode.cs" />
+    <Compile Include="LinkedList.cs" />
     <Compile Include="Tests\QueueTests.cs" />
     <Compile Include="Tests\DoublyListTests.cs" />
     <Compile Include="Queue.cs" />

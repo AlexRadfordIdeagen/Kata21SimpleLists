@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace SimpleLists
 {
-    public class INode<T>
+    public interface INode<T>
     {
-        public INode<T> next;
-        public T data;
+        T Data
+        {
+            get;
+            set;
+        }
+
+        INode<T> Next
+        {
+            get;
+            set;
+        }
     }
 }

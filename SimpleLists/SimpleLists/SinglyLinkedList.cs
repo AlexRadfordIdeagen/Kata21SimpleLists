@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SimpleLists
 {
-    public class SinglyLinkedList
+    public class SinglyLinkedList : LinkedList<SingleNode>
     {
-        private SingleNode<string> head;
 
         public void Print()
         {
-            SingleNode<string> current = head;
+            var current = head;
+
             while (current != null)
             {
-                Console.WriteLine(current.data);
-                current = current.next;
+                Console.WriteLine(current.Data);
+                current = current.Next;
             }
         }
 
@@ -25,20 +20,20 @@ namespace SimpleLists
         {
             int i = 0;
             int count = Count();
-            SingleNode<string> current = head;
+            var current = head;
 
             string[] result = new string[count];
 
             while (current != null)
             {
-                result[i] = current.data;
-                if (current.next == null)
+                result[i] = current.Data;
+                if (current.Next == null)
                 {
                     break;
                 }
                 else
                 {
-                    current = current.next;
+                    current = current.Next;
                 }
                 
                 i++;
@@ -50,11 +45,11 @@ namespace SimpleLists
         public int Count()
         {
             int i = 0;
-            SingleNode<string> current = head;
+           var current = head;
             while (current != null)
             {
                 i++;
-                current = current.next;
+                current = current.Next;
             }
             return i;
         }
@@ -64,25 +59,25 @@ namespace SimpleLists
 
             var node = Find(nodeName);
 
-            SingleNode<string> previous = null, current = head;
+           SingleNode<string> previous = null, current = head;
             while (current != null)
             {
                 if (current == node)
                 {
-                    head = current.next;
+                    head = current.Next;
                 }
-                if (current.next == node)
+                if (current.Next == node)
                 {
                     previous = current;
-                    previous.next = current.next.next;
+                    previous.Next = current.Next.Next;
 
                 }
-                current = current.next;
+                current = current.Next;
 
             }
         }
 
-        public SingleNode<string> Find(string search)
+        public INode<SingleNode<string>> Find(string search)
         {
             if (head == null)
             {
@@ -92,15 +87,15 @@ namespace SimpleLists
             }
             else
             {
-                SingleNode<string> current = head;
+                var current = head;
 
                 while (current != null)
                 {
-                    if (current.data.ToString() == search)
+                    if (current.Data.ToString() == search)
                     {
-                        return current;
+                        return (INode<SingleNode<string>>)current;
                     }
-                    current = current.next;
+                    current = current.Next;
 
                 }
                 return null;
@@ -111,26 +106,26 @@ namespace SimpleLists
         {
             if (head == null)
             {
-                head = new SingleNode<string>
+               var head = new SingleNode<string>()
                 {
-                    data = data,
-                    next = null
+                    Data = data,
+                    Next = null
                 };
             }
             else
             {
-                SingleNode<string> toAdd = new SingleNode<string>
+                var toAdd = new SingleNode<string>()
                 {
-                    data = data
+                    Data = data
                 };
 
-                SingleNode<string> current = head;
-                while (current.next != null)
+                var current = head;
+                while (current.Next != null)
                 {
-                    current = current.next;
+                    current = current.Next;
                 }
 
-                current.next = toAdd;
+                current.Next = toAdd;
             }
         }
     }

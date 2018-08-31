@@ -8,7 +8,7 @@ namespace SimpleLists
 {
    public class SingleNode<T>
     {
-        public SingleNode<T> next;
-        public T data;
+        public SingleNode<T> Next;
+        public T Data;
     }
 }

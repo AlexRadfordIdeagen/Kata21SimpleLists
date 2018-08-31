@@ -8,6 +8,6 @@ namespace SimpleLists
 {
     public class LinkedList<T> where  T : INode<T>
     {
-        private INode<T> head;
+        public INode<T> head;
     }
 }

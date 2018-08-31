@@ -1,14 +1,7 @@
-﻿using System;
-
-
-namespace SimpleLists
+﻿namespace SimpleLists
 {
     public class DoublyLinkedList : SinglyLinkedList
     {
-        private DoubleNode<string> head;
-
-  
-
         public override void Delete(string nodeName)
 
         {
@@ -19,19 +12,19 @@ namespace SimpleLists
             {
                 if (current == node)
                 {
-                    head = (DoubleNode<string>)current.next;
+                    head = current.Next;
                 }
-                if (current.next == node)
+                if (current.Next == node)
                 {
                     previous = current;
-                    previous.next = current.next.next;
-                    if (current.next != null)
+                    previous.Next = current.Next.Next;
+                    if (current.Next != null)
                     {
-                        var next = (DoubleNode<string>)current.next;
-                        next.previous = current;
+                        var next = current.Next;
+                        next.Previous = current;
                     }
                 }
-                current = (DoubleNode<string>)current.next;
+                current = current.Next;
 
             }
         }
@@ -40,28 +33,28 @@ namespace SimpleLists
         {
             if (head == null)
             {
-                head = new DoubleNode<string>
+                var head = new DoubleNode<string>
                 {
-                    data = data,
-                    next = null,
-                    previous = null
+                    Data = data,
+                    Next = null,
+                    Previous = null
                 };
             }
             else
             {
-                DoubleNode<string> toAdd = new DoubleNode<string>
+                var toAdd = new DoubleNode<string>
                 {
-                    data = data
+                    Data = data
                 };
 
-                DoubleNode<string> current = head;
-                while (current.next != null)
+                var current = head;
+                while (current.Next != null)
                 {
-                    current = (DoubleNode<string>)current.next;
+                    current = current.Next;
                 }
 
-                current.next = toAdd;
-                toAdd.previous = current;
+                current.Next = toAdd;
+                toAdd.Previous = current;
             }
         }
     }
