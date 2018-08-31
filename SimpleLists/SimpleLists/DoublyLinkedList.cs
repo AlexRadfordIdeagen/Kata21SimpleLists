@@ -7,21 +7,22 @@
         {
             var node = Find(nodeName);
 
-            DoubleNode<string> previous = null, current = head;
+            DoubleNode<string> previous = null;
+            INode<DoubleNode<string>> current = (INode<DoubleNode<string>>)head;
             while (current != null)
             {
                 if (current == node)
                 {
-                    head = current.Next;
+                   var head = current.Next;
                 }
                 if (current.Next == node)
                 {
-                    previous = current;
-                    previous.Next = current.Next.Next;
+                    previous = current.Data;
+                    previous.Next = current.Next.Next.Data;
                     if (current.Next != null)
                     {
-                        var next = current.Next;
-                        next.Previous = current;
+                        var Next = current.Next;
+                        Next.Data.Previous = current.Data;
                     }
                 }
                 current = current.Next;
@@ -53,8 +54,8 @@
                     current = current.Next;
                 }
 
-                current.Next = toAdd;
-                toAdd.Previous = current;
+                current.Next.Data = toAdd;
+                toAdd.Previous = (DoubleNode<string>)current;
             }
         }
     }

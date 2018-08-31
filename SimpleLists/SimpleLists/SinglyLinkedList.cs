@@ -1,7 +1,8 @@
 ﻿using System;
+
 namespace SimpleLists
 {
-    public class SinglyLinkedList : LinkedList<SingleNode>
+    public class SinglyLinkedList : LinkedList<SingleNode<string>>
     {
 
         public void Print()
@@ -26,7 +27,7 @@ namespace SimpleLists
 
             while (current != null)
             {
-                result[i] = current.Data;
+                result[i] = current.Data.Data;
                 if (current.Next == null)
                 {
                     break;
@@ -59,7 +60,10 @@ namespace SimpleLists
 
             var node = Find(nodeName);
 
-           SingleNode<string> previous = null, current = head;
+            INode<SingleNode<string>> previous = null;
+
+            INode<SingleNode<string>> current = (INode<SingleNode<string>>)head;
+
             while (current != null)
             {
                 if (current == node)
@@ -93,7 +97,7 @@ namespace SimpleLists
                 {
                     if (current.Data.ToString() == search)
                     {
-                        return (INode<SingleNode<string>>)current;
+                        return current;
                     }
                     current = current.Next;
 
@@ -125,7 +129,7 @@ namespace SimpleLists
                     current = current.Next;
                 }
 
-                current.Next = toAdd;
+                current.Next.Data.Data = toAdd.Data;
             }
         }
     }
