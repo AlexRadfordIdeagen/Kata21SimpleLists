@@ -3,60 +3,13 @@
 
 namespace SimpleLists
 {
-    public class DoublyLinkedList
+    public class DoublyLinkedList : SinglyLinkedList
     {
         private DoubleNode<string> head;
 
-        public void Print()
-        {
-            DoubleNode<string> current = head;
-            while (current != null)
-            {
-                Console.WriteLine(current.data);
-                current = current.next;
-            }
-        }
+  
 
-
-        public string[] Values()
-        {
-            int i = 0;
-            int count = Count();
-            DoubleNode<string> current = head;
-
-            string[] result = new string[count];
-
-            while (current != null)
-            {
-                result[i] = current.data;
-                if (current.next == null)
-                {
-                    break;
-                }
-                else
-                {
-                    current = current.next;
-                }
-
-                i++;
-
-            }
-            return result;
-        }
-
-        public int Count()
-        {
-            int i = 0;
-            DoubleNode<string> current = head;
-            while (current != null)
-            {
-                i++;
-                current = current.next;
-            }
-            return i;
-        }
-
-        public void Delete(string nodeName)
+        public override void Delete(string nodeName)
 
         {
             var node = Find(nodeName);
@@ -66,7 +19,7 @@ namespace SimpleLists
             {
                 if (current == node)
                 {
-                    head = current.next;
+                    head = (DoubleNode<string>)current.next;
                 }
                 if (current.next == node)
                 {
@@ -74,40 +27,16 @@ namespace SimpleLists
                     previous.next = current.next.next;
                     if (current.next != null)
                     {
-                        current.next.previous = current;
+                        var next = (DoubleNode<string>)current.next;
+                        next.previous = current;
                     }
                 }
-                current = current.next;
+                current = (DoubleNode<string>)current.next;
 
             }
         }
 
-        public DoubleNode<string> Find(string search)
-        {
-            if (head == null)
-            {
-                Console.WriteLine("List is empty");
-                return null;
-
-            }
-            else
-            {
-                DoubleNode<string> current = head;
-
-                while (current != null)
-                {
-                    if (current.data.ToString() == search)
-                    {
-                        return current;
-                    }
-                    current = current.next;
-
-                }
-                return null;
-            }
-        }
-
-        public void Add(string data)
+        public override void Add(string data)
         {
             if (head == null)
             {
@@ -128,7 +57,7 @@ namespace SimpleLists
                 DoubleNode<string> current = head;
                 while (current.next != null)
                 {
-                    current = current.next;
+                    current = (DoubleNode<string>)current.next;
                 }
 
                 current.next = toAdd;

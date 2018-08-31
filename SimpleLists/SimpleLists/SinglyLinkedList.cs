@@ -59,7 +59,7 @@ namespace SimpleLists
             return i;
         }
 
-        public void Delete(string nodeName)
+        public virtual void Delete(string nodeName)
         {
 
             var node = Find(nodeName);
@@ -107,7 +107,7 @@ namespace SimpleLists
             }
         }
 
-        public void Add(string data)
+        public virtual void Add(string data)
         {
             if (head == null)
             {

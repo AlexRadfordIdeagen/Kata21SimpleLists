@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SimpleLists
 {
-     public class DoubleNode<T>
+     public class DoubleNode<T> : SingleNode<T>
     {
-        public DoubleNode<T> next;
         public DoubleNode<T> previous;
-        public T data;
     }
 }
